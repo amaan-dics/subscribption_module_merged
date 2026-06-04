@@ -1,0 +1,571 @@
+
+.req-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.6rem !important;
+    margin-top: 1.2rem !important;
+    width: 100% !important;
+}
+
+.req-actions .match-btn {
+    width: 100% !important;
+    text-align: center !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* ---- DECLINE BUTTON ---- */
+
+.req-reject-btn {
+    height: 46px !important;
+    border: 1px solid rgba(239, 68, 68, 0.25) !important;
+    background: rgba(239, 68, 68, 0.07) !important;
+    color: #fca5a5 !important;
+    text-decoration: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background 0.25s ease, border-color 0.25s ease !important;
+    font-size: 0.85rem !important;
+}
+
+.req-reject-btn:hover {
+    border-color: rgba(239, 68, 68, 0.6) !important;
+    background: rgba(239, 68, 68, 0.14) !important;
+    color: #fca5a5 !important;
+    text-decoration: none !important;
+}
+
+/* ---- EMPTY STATE ---- */
+
+.req-empty {
+    text-align: center !important;
+    padding: 5rem 2rem !important;
+    border: 1px solid rgba(196, 154, 46, 0.12) !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    width: 100% !important;
+}
+
+.req-empty-title {
+    color: #fff !important;
+    font-size: 1.1rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.req-empty-sub {
+    color: rgba(255, 255, 255, 0.4) !important;
+    font-size: 0.85rem !important;
+}
+
+.kyc-card {
+    text-align: center;
+    max-width: 520px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+/* Icon circle */
+.kyc-icon-wrap {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 2px solid rgba(196, 154, 46, 0.45);
+    background: rgba(196, 154, 46, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.kyc-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+/* Gold pill badge */
+.kyc-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 1rem;
+    border: 1px solid rgba(196, 154, 46, 0.5);
+    color: #c49a2e;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    margin-bottom: 1.1rem;
+}
+
+/* Override estate-title / estate-sub spacing */
+.kyc-card .estate-title {
+    margin-bottom: 0.6rem;
+}
+
+.kyc-card .estate-sub {
+    margin-bottom: 1.75rem;
+    max-width: 380px;
+}
+
+/* ---- Tracker ---- */
+.kyc-tracker {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 6px;
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.kyc-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    position: relative;
+}
+
+/* Vertical connector line between steps */
+.kyc-step-line {
+    position: absolute;
+    left: 13px;
+    top: 26px;
+    width: 2px;
+    height: 28px;
+}
+
+.kyc-line-done {
+    background: #c49a2e;
+}
+
+.kyc-line-pending {
+    background: rgba(196, 154, 46, 0.25);
+}
+
+.kyc-line-hidden {
+    display: none;
+}
+
+/* Add bottom padding to steps that have a line below */
+.kyc-done {
+    padding-bottom: 1.5rem;
+}
+
+/* Step dot */
+.kyc-step-dot {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+}
+
+.kyc-dot-done {
+    background: #c49a2e;
+    color: #0e1510;
+    font-size: 0.7rem;
+}
+
+.kyc-dot-pending {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Step labels */
+.kyc-step-label {
+    color: #ffffff;
+    font-size: 0.88rem;
+    font-weight: 500;
+    display: block;
+    line-height: 1.4;
+    margin-top: 3px;
+}
+
+.kyc-label-muted {
+    color: rgba(255, 255, 255, 0.45) !important;
+}
+
+.kyc-step-sub {
+    display: block;
+    font-size: 0.75rem;
+    color: rgba(196, 154, 46, 0.7);
+    margin-top: 2px;
+}
+
+/* ---- Note box ---- */
+.kyc-note {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.45);
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-bottom: 1.75rem;
+    line-height: 1.5;
+}
+
+.kyc-note-icon {
+    color: rgba(196, 154, 46, 0.6);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* ---- CTA button — wider than default ---- */
+.kyc-cta {
+    min-width: 220px;
+    letter-spacing: 0.1em;
+}
+
+/* Remove global container padding from the chat page */
+.chat-wrapper .container-fluid {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* Ensure the header doesn't push the chat down further */
+.custom-header {
+    padding-bottom: 0 !important;
+}
+
+
+/* Modern Locked Button State */
+.btn-locked {
+    opacity: 0.6 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: rgba(255, 255, 255, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+}
+
+.btn-locked i {
+    font-size: 0.8rem;
+}
+
+.btn:disabled {
+    color: black !important;
+}
+
+
+.req-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.req-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.req-user {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+}
+
+.req-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #c49a2e;
+}
+
+.req-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.req-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.req-meta,
+.req-text {
+    font-size: 13px;
+    color: #b8b8b8;
+}
+
+.req-buttons {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.req-accept,
+.req-decline {
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.req-accept {
+    background: #c49a2e;
+    color: #fff;
+}
+
+.req-accept:hover {
+    background: #ffffff1f;
+    color: #c49a2e;
+    border: 2px solid #c49a2e;
+    text-decoration: none;
+}
+
+.req-decline {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+.req-decline:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .req-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .req-buttons {
+        width: 100%;
+    }
+
+    .req-accept,
+    .req-decline {
+        flex: 1;
+        text-align: center;
+    }
+}
+
+
+/* ---- EMOJI PICKER BUTTON — matches .btn-send-gold exactly ---- */
+#emoji_btn {
+    background: #e0b84a !important;
+    color: #0e1510 !important;
+    border: none !important;
+    height: 48px !important;
+    width: 48px !important;
+    padding: 0 !important;
+    border-radius: 4px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+    flex-shrink: 0 !important;
+    line-height: 1 !important;
+    margin-right: 10px !important;
+}
+
+#emoji_btn:hover {
+    background: #d4ad43 !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Active state — panel open, slightly darker to signal toggle */
+#emoji_btn.active {
+    background: #c49a2e !important;
+    color: #0e1510 !important;
+}
+
+
+/* ---- EMOJI PICKER BUTTON — matches .btn-send-gold exactly ---- */
+#emoji_btn {
+    background: #e0b84a !important;
+    color: #0e1510 !important;
+    border: none !important;
+    height: 48px !important;
+    width: 48px !important;
+    padding: 0 !important;
+    border-radius: 4px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+    flex-shrink: 0 !important;
+    line-height: 1 !important;
+    margin-right: 10px !important;
+}
+
+#emoji_btn:hover {
+    background: #d4ad43 !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Active state — panel open, slightly darker to signal toggle */
+#emoji_btn.active {
+    background: #c49a2e !important;
+    color: #0e1510 !important;
+}
+
+
+/* =========================================
+   [CHANGE 3] DAY-SECTION SEPARATORS
+   Groups messages visually by calendar day.
+   Each .chat-date-separator is injected once
+   per unique day label by chat.js renderMessages().
+   ========================================= */
+
+.chat-date-separator {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1.25rem 0 0.75rem;
+    padding: 0 0.5rem;
+    user-select: none;
+}
+
+.chat-date-separator::before{
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(196, 154, 46, 0.18);
+}
+
+.chat-date-separator span {
+    color: rgba(196, 154, 46, 0.7);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 0.2rem 0.65rem;
+    border: 1px solid rgba(196, 154, 46, 0.2);
+    border-radius: 999px;
+    background: rgba(196, 154, 46, 0.05);
+}
+
+
+/* =========================================
+   [CHANGE 7] HISTORY SENTINEL
+   The "scroll up to load earlier messages"
+   hint that sits above today's messages.
+   Removed automatically once history loads.
+   ========================================= */
+
+.chat-history-sentinel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1rem;
+    margin-bottom: 0.5rem;
+    cursor: default;
+}
+
+.chat-history-sentinel span {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.06em;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    padding: 0.25rem 0.9rem;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.chat-history-sentinel:hover span {
+    color: rgba(196, 154, 46, 0.6);
+    border-color: rgba(196, 154, 46, 0.25);
+}
+
+
+/* =========================================
+   [CHANGE 6] INLINE CHAT LIMIT BANNER
+   Replaces the blocking popup when a user's
+   plan chat limit is reached. Shown below
+   the message box, above the locked input.
+   ========================================= */
+
+.chat-limit-banner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.1rem;
+    background: rgba(196, 154, 46, 0.07);
+    border: 1px solid rgba(196, 154, 46, 0.22);
+    border-radius: 6px;
+    margin: 0 0 0;           /* sits flush between message box and input area */
+    flex-shrink: 0;
+}
+
+.chat-limit-banner-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.chat-limit-banner-text {
+    flex: 1;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.chat-limit-banner-btn {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #e0b84a;
+    border: 1px solid rgba(196, 154, 46, 0.4);
+    border-radius: 4px;
+    padding: 0.3rem 0.85rem;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.chat-limit-banner-btn:hover {
+    background: #e0b84a;
+    color: #0e1510;
+    text-decoration: none;
+}
+
+/* Locked input visual — dimmed when composer is disabled */
+.chat-input-area:has(#msg_input:disabled) {
+    opacity: 0.55;
+    pointer-events: none;
+}
+
+/* Fallback for browsers without :has() support */
+#msg_input:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}

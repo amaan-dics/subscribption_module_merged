@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="custom_footer" inherit_id="website.footer_custom">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <section class="footer pt40 pb16">
+                <div class="fgr">
+                    <div class="fbrand">
+                        <span class="fl">شعار الموقع</span>
+                        <span class="fle">Demo Platform</span>
+                        <p>Demo footer description. Replace with a brief summary of your platform's purpose, its legal
+                            basis, and a note directing users to consult experts for personal matters.
+                        </p>
+                    </div>
+                    <div class="fcol">
+                        <h5>Learn</h5>
+                        <a href="#learn">What is This?</a>
+                        <a href="#conditions">Conditions</a>
+                        <a href="#scholars">Expert Opinions</a>
+                        <a href="#iddah">Waiting Period</a>
+                        <a href="#adab">Etiquette</a>
+                    </div>
+                    <div class="fcol">
+                        <h5>Platform</h5>
+                        <a href="#connect">Create Profile</a>
+                        <a href="#connect">Browse Members</a>
+                        <a href="#pricing">Membership Plans</a>
+                        <a href="#verify">Get Verified</a>
+                        <a href="#marjas">References</a>
+                    </div>
+                    <div class="fcol">
+                        <h5>Resources</h5>
+                        <a href="#courses">Courses</a>
+                        <a href="#consult">Scholar Consultations</a>
+                        <a href="#" target="_blank" rel="noopener">Demo Link One ↗</a>
+                        <a href="#" target="_blank" rel="noopener">Demo Link Two ↗</a>
+                        <a href="#" target="_blank" rel="noopener">Demo Link Three ↗</a>
+                    </div>
+                </div>
+                <div class="fbot">
+                    <p>© 2025 Demo Platform. All rights reserved. Demo footer legal text — replace with your actual
+                        disclaimers, terms of use, and any required legal notices for your platform.
+                    </p>
+                    <div class="fleg">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Refund Policy</a>
+                    </div>
+                </div>
+            </section>
+        </xpath>
+    </template>
+
+</odoo>

@@ -1,0 +1,79 @@
+<odoo>
+    <template id="custom_header_inherit" inherit_id="website.layout">
+        <xpath expr="//header" position="replace">
+            <header class="custom-header">
+                <nav class="custom-nav">
+                    <a href="/" class="nav-brand">
+                        <span class="nav-arabic">ميزان الذهب</span>
+                        <span class="nav-sep">|</span>
+                        <span class="nav-en">Demo Platform</span>
+                    </a>
+                    <input type="checkbox" id="menu-toggle" class="menu-toggle"/>
+                    <label for="menu-toggle" class="menu-btn">
+                        <span/>
+                        <span/>
+                        <span/>
+                    </label>
+                    <div class="nav-menu">
+                        <ul class="nav-links">
+                            <li>
+                                <a href="/#learn">Learn</a>
+                            </li>
+                            <li>
+                                <a href="/#conditions">Conditions</a>
+                            </li>
+                            <li>
+                                <a href="/#iddah">Iddah</a>
+                            </li>
+                            <li>
+                                <a href="/#marjas">Marjas</a>
+                            </li>
+                            <li>
+                                <a href="/#pricing">Pricing</a>
+                            </li>
+                            <li>
+                                <a href="/#consult">Scholars</a>
+                            </li>
+                            <li>
+                                <a href="/#adab">Adab</a>
+                            </li>
+                            <li>
+                                <a href="/match">Profiles</a>
+                            </li>
+                            <li>
+                                <a href="/my_requests">Requests</a>
+                            </li>
+                        </ul>
+                        <t t-if="not request.session.uid">
+                            <a href="/web/login" class="nav-cta mobile-cta">Join Now</a>
+                        </t>
+                        <t t-else="">
+                            <div class="mobile-cta"
+                                 style="color:#d3aa39; justify-content:center; align-items:center; height: 10px; padding-left:5px;">
+                                <t t-esc="request.env.user.name"/>
+                            </div>
+                            <a href="/chatbox" class="nav-cta mobile-cta">Chat</a>
+                        </t>
+                    </div>
+                    <t t-if="not request.session.uid">
+                        <a href="/web/login" class="nav-cta desktop-cta">Join Now</a>
+                    </t>
+                    <t t-else="">
+                        <div class="desktop-cta">
+                            <div class="row col-12">
+                                <div class="col-6">
+                                    <a href="/chatbox" class="nav-cta">Chat</a>
+                                </div>
+                                <div class="col-6 d-flex align-items-center justify-content-center">
+                                    <div style="color: #d3aa39;">
+                                        <t t-esc="request.env.user.name"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </nav>
+            </header>
+        </xpath>
+    </template>
+</odoo>

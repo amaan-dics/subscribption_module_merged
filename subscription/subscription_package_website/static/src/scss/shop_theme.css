@@ -1,0 +1,893 @@
+/* =========================================
+   SHOP / CART / CHECKOUT / PAYMENT THEME
+   Matches the dark green + gold design system
+   Targets: /shop/cart, /shop/checkout, /payment
+   ========================================= */
+
+/* ---- BASE PAGE BACKGROUND ---- */
+body.website_sale_cart,
+body.website_sale_checkout,
+body.website_sale,
+#wrapwrap {
+    background: #0e1510 !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Breadcrumb */
+.o_wsale_breadcrumb,
+.breadcrumb,
+.breadcrumb-item,
+.breadcrumb-item a,
+.breadcrumb-item.active {
+    background: transparent !important;
+    color: #c49a2e !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(196, 154, 46, 0.4) !important;
+}
+
+/* =========================================
+   CART PAGE — /shop/cart
+   ========================================= */
+
+/* Page title */
+.o_cart_summary h1,
+#cart_products h1,
+h1.o_wsale_cart_title {
+    color: #ffffff !important;
+    font-family: 'Playfair Display', serif !important;
+}
+
+/* Cart table wrapper */
+.o_cart_products_table,
+#cart_products table,
+.table.table-bordered {
+    background: transparent !important;
+    border-color: rgba(196, 154, 46, 0.12) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Table header */
+.o_cart_products_table thead th,
+#cart_products thead th {
+    background: rgba(196, 154, 46, 0.06) !important;
+    border-color: rgba(196, 154, 46, 0.15) !important;
+    color: #c49a2e !important;
+    font-size: 0.7rem !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+}
+
+/* Table rows */
+.o_cart_products_table tbody tr,
+#cart_products tbody tr {
+    border-color: rgba(255, 255, 255, 0.05) !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+}
+
+.o_cart_products_table tbody td,
+#cart_products tbody td {
+    border-color: rgba(255, 255, 255, 0.05) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    vertical-align: middle !important;
+}
+
+/* Product name in cart */
+#cart_products .product-name,
+.o_cart_products_table .product-name a {
+    color: #ffffff !important;
+    font-weight: 500 !important;
+}
+
+/* Remove link */
+#cart_products a.o_wsale_remove,
+.o_wsale_remove {
+    color: rgba(239, 68, 68, 0.7) !important;
+    font-size: 0.78rem !important;
+    text-decoration: none !important;
+}
+
+#cart_products a.o_wsale_remove:hover,
+.o_wsale_remove:hover {
+    color: #fca5a5 !important;
+}
+
+/* Quantity input +/- */
+.o_wsale_product_quantity .input-group,
+.js_quantity.input-group {
+    border: 0.4px solid rgba(196, 154, 46, 0.4) !important;
+    /*border-radius: 0.5 !important;*/
+    background-color: #0e1510 !important;
+}
+
+.js_quantity input,
+.o_wsale_product_quantity input {
+    background: rgba(255, 255, 255, 0.04) !important;
+    color: #ffffff !important;
+    border: none !important;
+    text-align: center !important;
+}
+
+.js_quantity .btn,
+.o_wsale_product_quantity .btn {
+    background: rgba(196, 154, 46, 0.12) !important;
+    border: none !important;
+    color: #c49a2e !important;
+    font-weight: 700 !important;
+}
+
+.js_quantity .btn:hover,
+.o_wsale_product_quantity .btn:hover {
+    background: rgba(196, 154, 46, 0.25) !important;
+    color: #e0b84a !important;
+
+}
+
+
+
+/* Price */
+.oe_currency_value,
+.o_cart_products_table .text-end,
+#cart_products .text-end {
+    color: #e0b84a !important;
+    font-weight: 600 !important;
+}
+
+/* Note below cart */
+#cart_products .text-muted,
+.o_cart_note {
+    color: rgba(255, 255, 255, 0.4) !important;
+    font-size: 0.8rem !important;
+}
+
+/* =========================================
+   ORDER SUMMARY PANEL (right column)
+   Shared by cart + checkout + payment
+   ========================================= */
+
+.o_cart_summary,
+.o_checkout_summary,
+.o_wsale_cart_summary,
+#o_payment_summary {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(196, 154, 46, 0.18) !important;
+    border-radius: 0 !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Summary title */
+.o_cart_summary h4,
+.o_checkout_summary h4,
+.o_wsale_cart_summary h4,
+#o_payment_summary h4,
+.o_cart_summary .h5,
+.o_checkout_summary .fw-bold {
+    color: #ffffff !important;
+    font-size: 0.95rem !important;
+    border-bottom: 1px solid rgba(196, 154, 46, 0.15) !important;
+    padding-bottom: 0.75rem !important;
+    margin-bottom: 0.75rem !important;
+}
+
+/* Summary item count line */
+.o_cart_summary .text-muted,
+.o_checkout_summary .text-muted {
+    color: rgba(255, 255, 255, 0.4) !important;
+    font-size: 0.8rem !important;
+}
+
+/* Summary line labels */
+.o_cart_summary .row > div,
+.o_checkout_summary .row > div {
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-size: 0.85rem !important;
+}
+
+/* Summary line amounts */
+.o_cart_summary .text-end,
+.o_checkout_summary .text-end {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Total row */
+.o_cart_summary .fw-bold,
+.o_checkout_summary .fw-bold,
+#o_payment_summary .fw-bold {
+    color: #ffffff !important;
+    border-top: 1px solid rgba(196, 154, 46, 0.2) !important;
+    padding-top: 0.6rem !important;
+    margin-top: 0.4rem !important;
+}
+
+/* Total amount */
+.o_cart_summary .fw-bold .oe_currency_value,
+.o_checkout_summary .fw-bold .oe_currency_value {
+    color: #e0b84a !important;
+    font-size: 1.05rem !important;
+}
+
+/* Divider hr */
+.o_cart_summary hr,
+.o_checkout_summary hr {
+    border-color: rgba(196, 154, 46, 0.12) !important;
+}
+
+/* Discount code input */
+#promo_code,
+.o_wsale_coupon_form input[type="text"] {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(196, 154, 46, 0.25) !important;
+    color: #ffffff !important;
+    border-radius: 0 !important;
+}
+
+#promo_code::placeholder,
+.o_wsale_coupon_form input::placeholder {
+    color: rgba(255, 255, 255, 0.25) !important;
+}
+
+#promo_code:focus,
+.o_wsale_coupon_form input:focus {
+    border-color: #c49a2e !important;
+    box-shadow: 0 0 0 3px rgba(196, 154, 46, 0.12) !important;
+    outline: none !important;
+}
+
+/* Apply button */
+.o_wsale_coupon_btn,
+#coupon_apply_btn,
+.o_wsale_coupon_form .btn {
+    background: transparent !important;
+    border: 0.4px solid rgba(196, 154, 46, 0.4) !important;
+    color: #c49a2e !important;
+    border-radius: 0 !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.08em !important;
+    font-weight: 600 !important;
+}
+
+.o_wsale_coupon_btn:hover,
+.o_wsale_coupon_form .btn:hover {
+    background: rgba(196, 154, 46, 0.08) !important;
+    color: #e0b84a !important;
+    border-color: #c49a2e !important;
+}
+
+
+
+button.btn-primary[name="website_sale_main_button"] {
+    background: #c49a2e !important;
+    border: 1px solid #c49a2e !important;
+    color: #0e1510 !important;
+    border-radius: 0 !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    /*height: 48px !important;*/
+    width: 100% !important;
+    transition: background 0.2s ease !important;
+}
+
+.o_cart_summary .btn-primary:hover,
+.o_checkout_summary .btn-primary:hover,
+.o_payment_form .btn-primary:hover,
+.a-submit.btn-primary:hover {
+    background: #e0b84a !important;
+    border-color: #e0b84a !important;
+    color: #0e1510 !important;
+}
+
+/* "or" divider */
+.o_cart_summary .o_cart_or,
+.o_checkout_summary .o_cart_or,
+.o_cart_summary .text-center.text-muted {
+    color: rgba(255, 255, 255, 0.25) !important;
+    font-size: 0.75rem !important;
+}
+
+
+/* Back / Continue links */
+.o_cart_summary a:not(.btn),
+.o_checkout_summary a:not(.btn) {
+    color: rgba(196, 154, 46, 0.7) !important;
+    font-size: 0.8rem !important;
+}
+
+.o_cart_summary a:not(.btn):hover,
+.o_checkout_summary a:not(.btn):hover {
+    color: #c49a2e !important;
+}
+
+/* Secure checkout note */
+.o_cart_summary .text-muted small,
+.o_wsale_secure_checkout {
+    color: rgba(255, 255, 255, 0.25) !important;
+    font-size: 0.72rem !important;
+}
+
+/* =========================================
+   CHECKOUT PAGE — /shop/checkout
+   ========================================= */
+
+/* Section headings */
+.o_checkout_page h4,
+.o_checkout_page .o_heading,
+#delivery_address h4,
+#billing_address h4,
+.o_checkout_delivery h4 {
+    color: #c49a2e !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+    border-bottom: none !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Address card */
+.o_address_item,
+.o_wsale_address_card,
+.card.o_delivery_carrier_select {
+    background: rgba(255, 255, 255, 0.03) !important;
+    /*border: 1px solid rgba(255, 255, 255, 0.08) !important;*/
+    border-radius: 0 !important;
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.o_address_item.selected,
+.o_wsale_address_card.selected,
+.card.o_delivery_carrier_select.selected {
+    border-color: #c49a2e !important;
+    background: rgba(196, 154, 46, 0.06) !important;
+}
+
+/* Edit link */
+.o_wsale_address_edit,
+.o_address_item a {
+    color: #c49a2e !important;
+    font-size: 0.78rem !important;
+}
+
+/* Add address */
+.o_wsale_add_address,
+a[href*="address"] {
+    color: rgba(196, 154, 46, 0.7) !important;
+    font-size: 0.82rem !important;
+}
+
+/* Delivery method card */
+.o_delivery_carrier_select {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Radio buttons */
+.o_delivery_carrier_select .form-check-input:checked {
+    background-color: #c49a2e !important;
+    border-color: #c49a2e !important;
+}
+
+/* Toggle switch (same as billing) */
+.form-check-input:checked {
+    background-color: #c49a2e !important;
+    border-color: #c49a2e !important;
+}
+
+/* "Same as delivery address" label */
+.form-check-label {
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-size: 0.85rem !important;
+}
+
+/* =========================================
+   PAYMENT PAGE — /payment/confirm etc
+   ========================================= */
+
+/* Payment provider selection */
+.o_payment_option_card,
+.o_payment_acquirer,
+.o_payment_provider {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 0 !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    margin-bottom: 0.75rem !important;
+}
+
+.o_payment_option_card.selected,
+.o_payment_acquirer.selected {
+    border-color: #c49a2e !important;
+    background: rgba(196, 154, 46, 0.06) !important;
+}
+
+/* Wire transfer / payment method label */
+.o_payment_option_card label,
+.o_payment_acquirer label {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 0.88rem !important;
+}
+
+/* Warning triangle icon near wire transfer */
+.o_payment_option_card .text-warning,
+.fa-exclamation-triangle {
+    color: #e0b84a !important;
+}
+
+/* Payment info text */
+.o_payment_option_card p,
+.o_payment_acquirer p,
+.o_payment_extra_info {
+    color: rgba(255, 255, 255, 0.5) !important;
+    font-size: 0.82rem !important;
+    line-height: 1.5 !important;
+}
+
+/* Delivery & Billing section heading */
+#o_payment_summary .o_payment_summary_title,
+.o_payment_summary_address h6 {
+    color: #c49a2e !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+}
+
+/* Address text in payment summary */
+.o_payment_summary_address p,
+.o_payment_summary_address address {
+    color: rgba(255, 255, 255, 0.55) !important;
+    font-size: 0.82rem !important;
+}
+
+/* Edit link in payment */
+.o_payment_summary_address a {
+    color: #c49a2e !important;
+    font-size: 0.78rem !important;
+}
+
+/* =========================================
+   STEP BREADCRUMB (Review Order > Delivery > Payment)
+   ========================================= */
+
+.o_wsale_steps,
+.o_wsale_checkout_progress {
+    margin-bottom: 1.5rem !important;
+}
+
+.o_wsale_steps .o_wsale_step,
+.o_wsale_checkout_progress .o_wsale_step_title {
+    color: rgba(255, 255, 255, 0.3) !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+}
+
+.o_wsale_steps .o_wsale_step.o_current,
+.o_wsale_checkout_progress .o_wsale_step_current {
+    color: #c49a2e !important;
+    font-weight: 600 !important;
+}
+
+.o_wsale_steps .o_wsale_step.o_done,
+.o_wsale_checkout_progress .o_wsale_step_done {
+    color: rgba(196, 154, 46, 0.55) !important;
+}
+
+.o_wsale_steps .o_wsale_sep {
+    color: rgba(196, 154, 46, 0.3) !important;
+}
+
+/* =========================================
+   FORM INPUTS (checkout address forms)
+   ========================================= */
+
+.o_checkout_page .form-control,
+.o_checkout_page .form-select,
+#checkout_form .form-control,
+#checkout_form .form-select {
+    background: rgba(255, 255, 255, 0.04) !important;
+    /*border: 1px solid rgba(196, 154, 46, 0.25) !important;*/
+    color: #ffffff !important;
+    border-radius: 0 !important;
+    border-bottom: none;
+}
+
+.o_checkout_page .form-control:focus,
+.o_checkout_page .form-select:focus {
+    border-color: #c49a2e !important;
+    box-shadow: 0 0 0 3px rgba(196, 154, 46, 0.12) !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.o_checkout_page .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.o_checkout_page label,
+#checkout_form label {
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-size: 0.78rem !important;
+    letter-spacing: 0.04em !important;
+}
+
+/* =========================================
+   GLOBAL CARD / PANEL overrides
+   ========================================= */
+
+.o_checkout_page .card,
+.o_wsale_cart .card,
+#wrapwrap .card {
+    background: rgba(255, 255, 255, 0.02) !important;
+    /*border: 1px solid rgba(196, 154, 46, 0.12) !important;*/
+    border-radius: 0 !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+#wrapwrap .card-header {
+    background: #0e1510 !important;
+    /*border-bottom: 1px solid rgba(196, 154, 46, 0.12) !important;*/
+    /*border: 0.4px solid rgba(196, 154, 46, 0.4) !important;*/
+    color: #ffffff !important;
+    border-radius: 0 8px 8px 0 !important;
+}
+
+/* =========================================
+   SECONDARY / GHOST BUTTON overrides
+   ========================================= */
+
+#wrapwrap .btn-secondary,
+#wrapwrap .btn-outline-secondary {
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+    border-radius: 0 !important;
+}
+
+#wrapwrap .btn-secondary:hover,
+#wrapwrap .btn-outline-secondary:hover {
+    border-color: #c49a2e !important;
+    color: #c49a2e !important;
+}
+
+/* =========================================
+   SCROLLBAR (subtle gold tint)
+   ========================================= */
+
+#wrapwrap ::-webkit-scrollbar {
+    width: 5px !important;
+}
+
+#wrapwrap ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02) !important;
+}
+
+#wrapwrap ::-webkit-scrollbar-thumb {
+    background: rgba(196, 154, 46, 0.3) !important;
+}
+
+/* =========================================
+   FIX: PRICING SECTION SUBSCRIBED BUTTON
+   Restores grayish text and border on white bg
+   ========================================= */
+
+.pricing .plan .btn[disabled],
+.pricing .plan .btn:disabled,
+.pricing .plan .btn-white-border[disabled] {
+    background-color: transparent !important;
+    border: 1px solid #d1d5db !important; /* Light grayish border */
+    color: #9ca3af !important; /* Grayish text */
+    opacity: 0.8 !important;
+    cursor: not-allowed !important;
+    box-shadow: none !important;
+}
+
+/* =========================================
+   CHECKOUT CARDS & LIST GROUPS
+   Text white, border #c49a2e
+   ========================================= */
+
+:where(.card:not([data-vxml])) .card-body {
+    background-color: #0e1510 !important;
+    color: #ffffff !important;
+    /*border: 0.4px solid rgb(255 255 255) !important; !* Fixed: added 'solid' and set to #c49a2e *!*/
+    /*border-radius: 4px !important; !* Using standard px instead of % for cleaner corners *!*/
+}
+.text-bg-light{
+        background-color: #0e1510 !important;
+    background-color: #FFFFFF;
+    border: 0.4px white;
+}
+
+
+.btn-link:hover {
+    color: #ffc107;
+}
+
+:where(.card:not([data-vxml])) .card-body .text-muted,
+.o_colored_level :where(.card:not([data-vxml])) .card-body .text-muted {
+    color: #ffffff !important;
+}
+
+.oe_currency_value,
+.o_cart_products_table .text-end,
+#cart_products .text-end {
+    color: #ffffff !important;
+}
+
+.js_quantity .quantity .form-control .border-start-0 .border-end-0 {
+    background-color: #212529 !important;
+    color: #ffffff !important;
+}
+
+.form-control {
+    background-color: #0e1510 !important;
+    color: #ffffff !important;
+    border-radius: 0 8px 8px 0;
+}
+
+#order_delivery,
+#order_total_untaxed,
+#order_total_taxes,
+#order_total,
+#card_total,
+#card_total * {
+    color: #ffffff !important;
+}
+
+.input-group {
+    border: 0.4px solid rgba(196, 154, 46, 0.4) !important; /* Fixed: added 'solid' */
+
+}
+
+.css_quantity{
+    border-radius: 8px !important;
+}
+
+.input-group > .form-floating {
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+    background-color: #0e1510;
+}
+
+.o_cart_summary .btn-primary,
+.o_checkout_summary .btn-primary,
+.o_wsale_cart_summary .a-submit.btn-primary,
+a[href*="checkout"].btn-primary,
+button.btn-primary[name="o_payment_submit_button"],
+#o_payment_form_pay,
+.o_payment_form .btn-primary,
+.a-submit.btn-primary {
+    background: #c49a2e !important;
+    border: 1px #c49a2e !important;
+    color: #0e1510 !important;
+    border-radius: 4px !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em !important;
+    width: 100% !important;
+    transition: background 0.2s ease !important;
+}
+
+.o_website_sale_checkout .o_total_card .accordion-item {
+    background-color: #0e1510 !important;
+}
+
+
+
+.gap-2 {
+    gap: 0.5rem !important;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+.form-check {
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 1.5em;
+    margin-bottom: 0.125rem;
+}
+
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+
+.row {
+    --gutter-x: 30px;
+    --gutter-y: 0;
+}
+
+/* Specific target for the List Group Items */
+.list-group-item:not([class*="list-group-item-"]):not(.active) {
+    color: #ffffff !important;
+    background-color: #0e1510 !important;
+    border-color: #ffffff21;
+}
+
+
+
+.o_delivery_form .o_outline:hover:not(.text-muted){
+        border-color: rgb(212 173 67 / 0.71);
+
+}
+
+/* =========================================
+   ORDER TOTAL ACCORDION
+   Match o_total_card styling
+   ========================================= */
+
+    .o_wsale_total_accordion_item,
+.o_wsale_total_accordion_item .accordion-item {
+    background: #0e1510 !important;
+    border: 0.4px solid rgba(196, 154, 46, 0.45) !important;
+    border-radius: 4px !important;
+    box-shadow: none !important;
+}
+
+/* Accordion header */
+.o_wsale_total_accordion_item .accordion-header,
+.o_wsale_total_accordion_item .accordion-button {
+    background: #0e1510 !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Accordion body */
+.o_wsale_total_accordion_item .accordion-body,
+.o_wsale_total_accordion_item .accordion-body * {
+    color: #ffffff !important;
+    background: #0e1510 !important;
+}
+
+/* Summary rows */
+.o_wsale_total_accordion_item .row,
+.o_wsale_total_accordion_item .row div,
+.o_wsale_total_accordion_item .text-muted,
+.o_wsale_total_accordion_item span,
+.o_wsale_total_accordion_item strong {
+    color: #ffffff !important;
+}
+
+/* Currency values */
+.o_wsale_total_accordion_item .oe_currency_value {
+    color: #ffffff !important;
+}
+
+/* Divider inside accordion */
+.o_wsale_total_accordion_item hr {
+    border-color: rgba(196, 154, 46, 0.18) !important;
+    opacity: 1 !important;
+}
+
+/* Remove Bootstrap blue focus styles */
+.o_wsale_total_accordion_item .accordion-button:not(.collapsed) {
+    background: #0e1510 !important;
+    color: #ffffff !important;
+}
+
+.o_wsale_total_accordion_item .accordion-button:focus {
+    box-shadow: none !important;
+}
+
+
+.o_website_sale_checkout .o_total_card .accordion-item .text-muted, .o_colored_level .o_website_sale_checkout .o_total_card .accordion-item .text-muted {
+    color: rgb(255 255 255) !important;
+}
+
+.accordion-button {
+    color: #fff;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #fff;
+}
+
+.form-select {
+    color: #fff !important;
+    background-color: #0e1510 !important;
+    border-color: rgba(196, 154, 46, .4) !important;
+    background-image: url("https://icons8.com/icon/60592/drop-down") !important;
+}
+
+a {
+    color: rgb(255 255 255);
+}
+
+.btn-fill-primary, .btn-primary {
+    --btn-bg: #c49a2e;
+    --btn-hover-bg: #d4ad43;
+    --btn-border-color: #d4ad43
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem transparent;
+    /*border: #c49a2e;*/
+}
+
+
+
+.btn-fill-primary, .btn-primary{
+    --btn-hover-border-color: rgb(196 154 46 / 0.94)
+}
+
+.o_website_sale_checkout .o_total_card {
+    border: 0.4px 0px 0.4px 0px solid rgb(255 255 255) !important; /* Fixed: added 'solid' */
+    background-color: transparent !important;
+}
+
+
+.border-primary{
+    border-color: #c49a2e12 !important;
+    /*border-width: 0.2px !important;*/
+}
+#block_user_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 !important; /* Removes default button padding that might be squishing the image */
+}
+
+#block_user_btn img {
+    width: 70% !important; /* Adjust this percentage to control the visible size relative to the button */
+    height: auto !important;
+    object-fit: contain;
+}
+
+.btn:hover{
+    background-color: #c49a2e !important;
+    color: black;
+}
+
+.px-3{
+    color: #c49a2e;
+}
+
+.o_payment_form .o_outline:hover {
+    --list-group-border-color: #ffffff1f !important;
+}
+
+
+.oe_cart input:focus,
+.oe_cart select:focus,
+.oe_cart textarea:focus {
+    border-color: #ffffff1f !important;
+    outline: none; /* Optional: removes the default browser focus ring if you prefer */
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.1); /* Optional: adds a subtle glow consistent with your color */
+}
+
+.form-select {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .match-grid {
+        /* Forces the container into exactly two columns */
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem !important;
+    }
+}
+
+.btn:focus {
+    border-color: #ffffff1f;
+}
+
+@media (max-width: 991.98px) {
+    .o_website_sale_checkout .o_total_card .card-body, .o_website_sale_checkout .o_total_card .accordion-item, .o_website_sale_checkout .o_total_card .accordion-button {
+        background-color: #0e1510 !important;
+    }
+}

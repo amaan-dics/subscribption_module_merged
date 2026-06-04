@@ -1,0 +1,43 @@
+# -*- coding: utf-8 -*-
+{
+    'name': 'Subscription Management Extended',
+    'version': '18.0.0.0',
+    'category': 'Subscription/Website',
+    'depends': [
+        'base',
+        'web',
+        'mail',
+        'bus',
+        'website',
+        'website_sale',
+        'subscription_package',
+    ],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/subscription_package_plan_views.xml',
+        'views/subscription_type_views.xml',
+        'views/subscription_comparisons_template.xml',
+        'views/sign_up_template.xml',
+        'views/match_page.xml',
+        'views/res_partner_views.xml',
+        'views/kyc_pending_template.xml',
+        'views/request_template.xml',
+        'views/chatbox_template.xml',
+        'views/connect_request.xml',
+        'views/chat_terms_views.xml',
+        'views/chat_terms_template.xml',
+    ],
+    'assets': {
+        'web.assets_frontend': [
+            'subscription_package_extended/static/src/js/redirect_button.js',
+            'subscription_package_extended/static/src/js/chat.js',
+            'subscription_package_extended/static/src/scss/style.scss',
+            'subscription_package_extended/static/src/scss/chat.scss',
+            'subscription_package_extended/static/src/scss/request.css',
+        ],
+    },
+    'license': 'LGPL-3',
+    'installable': True,
+    'auto_install': False,
+    'application': True,
+}

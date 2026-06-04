@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="auth_signup_form_ui" inherit_id="auth_signup.signup">
+        <xpath expr="//form" position="replace">
+            <div style="min-height:100vh; display:flex; align-items:center; justify-content:center; background: rgba(14, 21, 16, 0.97);">
+                <form method="post" enctype="multipart/form-data" class="oe_signup_form"
+                      style="width:100%; max-width:450px; background: rgba(14, 21, 16, 0.97); border-width: 1px !important;
+                             border-style: solid !important; border-color: #ffffff1f !important;
+                             padding:30px; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.08);">
+
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <input type="hidden" name="redirect" t-att-value="redirect"/>
+                    <input type="hidden" name="token" t-att-value="token"/>
+                    <div style="text-align:center; margin-bottom:20px;">
+                        <h3>Create Account</h3>
+                        <p style="color:#777; font-size:14px;">Complete your KYC to continue</p>
+                    </div>
+                    <div class="mb-3 text-center">
+                        <div class="mb-3 text-center">
+
+                            <div class="selfie-container" onclick="openCamera()">
+
+                                <!-- Placeholder -->
+                                <div class="selfie-overlay" id="selfie_placeholder">
+                                    <i class="fa fa-camera"></i>
+                                    <span>Tap to Take Selfie</span>
+                                </div>
+
+                                <!-- Selfie Preview -->
+                                <img id="selfie_preview"
+                                     style="display:none;"
+                                     alt="Selfie"/>
+
+                            </div>
+
+                            <input type="hidden" name="selfie" id="selfie_input" required="1"/>
+
+                        </div>
+                    </div>
+                    <t t-call="auth_signup.fields"/>
+                    <div style="margin-top:10px;">
+                        <label>Gender</label>
+                        <select name="gender" class="form-control mb-2">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                        <label>Age</label>
+                        <input type="number" name="age" class="form-control mb-2" min="18"/>
+                        <label>Phone</label>
+                        <input type="text" name="phone" class="form-control mb-2"/>
+                        <label>Address</label>
+                        <textarea name="address" class="form-control mb-2"/>
+                        <label>Profile Picture</label>
+                        <img id="profile_pic_preview"
+                             style="display:none; width:100%; height:200px; object-fit:cover; border-radius:10px; margin-bottom:10px;"/>
+                        <input type="file" name="profile_pic" id="profile_pic_input" class="form-control" required="1"
+                               style="border-radius:8px; margin-bottom:10px; font-size:13px;"/>
+                        <label>ID Proof</label>
+                        <input type="file" name="id_proof" class="form-control mb-2" required="1"
+                               style="border-radius:8px; margin-bottom:10px; font-size:13px;"/>
+                    </div>
+                    <button type="submit" id="selfie_btn" class="selfie-btn">
+                        Submit Verification
+                    </button>
+                    <div style="text-align:center; margin-top:10px;">
+                        <a t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link btn-sm">
+                            Already have an account?
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="signup_scripts" inherit_id="website.layout">
+        <xpath expr="//body" position="inside">
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                const profileInput = document.getElementById('profile_pic_input');
+                if (profileInput) {
+                profileInput.addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                const preview = document.getElementById('profile_pic_preview');
+                preview.src = URL.createObjectURL(file);
+                preview.style.display = 'block';
+                }
+                });
+                }
+                const savedForm = localStorage.getItem('signup_form_data');
+                if (savedForm) {
+                try {
+                const data = JSON.parse(savedForm);
+                Object.keys(data).forEach(name => {
+                const el = document.querySelector(`[name="${name}"]`);
+                if (el &amp;&amp; el.type !== "file") {
+                el.value = data[name];
+                }
+                });
+                } catch (e) {
+                console.error("Form restore error:", e);
+                }
+                }
+
+                const selfieData = localStorage.getItem('selfie');
+                if (selfieData) {
+                const preview = document.getElementById('selfie_preview');
+                const input = document.getElementById('selfie_input');
+                const btn = document.getElementById('selfie_btn');
+                if (input) input.value = selfieData;
+                if (preview) {
+                preview.src = selfieData;
+                preview.style.display = "block";
+                }
+
+                if (btn) btn.innerText = "Submit Verification";
+                }
+
+                const btn = document.getElementById('selfie_btn');
+                if (btn) {
+                btn.addEventListener('click', function () {
+                const form = document.querySelector('.oe_signup_form');
+                if (!form) return;
+                const data = {};
+                form.querySelectorAll('input, textarea, select').forEach(el => {
+                if (el.name &amp;&amp; el.type !== "file" &amp;&amp; el.type !== "password") {
+                data[el.name] = el.value;
+                }
+                });
+                localStorage.setItem('signup_form_data', JSON.stringify(data));
+                });
+                }
+                const form = document.querySelector('.oe_signup_form');
+                if (form) {
+                form.addEventListener('submit', function () {
+                localStorage.removeItem('selfie');
+                localStorage.removeItem('signup_form_data');
+                });
+                }
+                });
+                function openCamera() {
+                window.location.href = "/selfie-capture";
+                }
+            </script>
+        </xpath>
+    </template>
+    <template id="selfie_capture_template">
+        <t t-call="website.layout">
+            <div style="height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; background:black;">
+                <video id="video" autoplay="1" muted="1" playsinline="1"
+                       style="width:100%; max-width:400px; border-radius:12px;">
+                </video>
+                <canvas id="canvas" style="display:none;"/>
+                <p style="color:white; margin-top:10px;">
+                    Hold still... capturing automatically
+                </p>
+                <button id="capture_btn"
+                        style="margin-top:15px; padding:10px 20px; border:none; border-radius:8px; background:#6366f1; color:white;">
+                    Capture Now
+                </button>
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", async function () {
+                const video = document.getElementById('video');
+                const canvas = document.getElementById('canvas');
+                const btn = document.getElementById('capture_btn');
+                if (!video || !canvas || !btn) {
+                console.error("Camera DOM not found");
+                return;
+                }
+                let streamRef = null;
+                try {
+                const stream = await navigator.mediaDevices.getUserMedia({
+                video: { facingMode: "user" },
+                audio: false
+                });
+                streamRef = stream;
+                video.srcObject = stream;
+                await video.play();
+                } catch (err) {
+                console.error("Camera error:", err);
+                alert("Camera not working: " + err.message);
+                return;
+                }
+                btn.addEventListener("click", captureSelfie);
+                function captureSelfie() {
+                const ctx = canvas.getContext('2d');
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                ctx.drawImage(video, 0, 0);
+                const data = canvas.toDataURL('image/png');
+                localStorage.setItem('selfie', data);
+                if (streamRef) {
+                streamRef.getTracks().forEach(t => t.stop());
+                }
+                window.location.href = "/web/signup";
+                }
+                });
+            </script>
+        </t>
+    </template>
+
+</odoo>

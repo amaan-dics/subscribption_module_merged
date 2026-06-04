@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_subscription_type,subscription.type,model_subscription_type,base.group_user,1,1,1,1
+access_subscription_feature,subscription_feature,model_subscription_feature,base.group_user,1,1,1,1
+access_connect_request,connect_request,model_connect_request,base.group_user,1,1,1,1
+access_portal_notification,portal.notification,model_portal_notification,base.group_portal,1,1,1,0
+access_chat_terms,chat.terms,model_chat_terms,base.group_user,1,1,1,1
+access_chat_terms_acceptance,chat.terms.acceptance,model_chat_terms_acceptance,base.group_user,1,1,1,1

@@ -1,0 +1,227 @@
+<odoo>
+    <template id="chatbox_template" name="Chat Box">
+        <t t-call="website.layout">
+            <t t-set="no_footer" t-value="True"/>
+            <div class="chat-wrapper position-relative">
+                <div class="container-fluid p-0 h-100">
+                    <div class="row g-0 chat-container h-100">
+                        <div class="col-12 col-md-4 col-lg-3 chat-sidebar d-flex flex-column h-100">
+                            <div class="chat-sidebar-header flex-shrink-0">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h3 class="mb-0">Messages</h3>
+                                    <button type="button" class="btn-chat-close" id="mobile_chat_close">
+                                        <i class="fa fa-times"/>
+                                    </button>
+                                </div>
+                                <div class="chat-search">
+                                    <i class="fa fa-search search-icon"/>
+                                    <input type="text" placeholder="Search conversations..."/>
+                                </div>
+                            </div>
+                            <div class="list-group contact-list flex-grow-1" id="contact_list">
+                                <t t-foreach="partners" t-as="p">
+                                    <a href="#" t-att-data-id="p.id"
+                                       class="list-group-item contact_item d-flex align-items-center">
+                                        <div class="avatar-container flex-shrink-0">
+                                            <div class="avatar-letter" t-if="not p.image_128">
+                                                <t t-esc="p.name[0]"/>
+                                            </div>
+                                            <img t-if="p.image_128"
+                                                 t-att-src="'/web/image/res.partner/%s/image_128' % p.id"
+                                                 class="chat-avatar"/>
+
+                                        </div>
+                                        <div class="contact-info flex-grow-1 overflow-hidden">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="contact-name text-truncate">
+                                                    <t t-esc="p.name"/>
+                                                </span>
+                                                <span class="chat-time flex-shrink-0">...</span>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center mt-1">
+                                                <span class="chat-preview text-truncate">Tap to view conversation...
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </t>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-8 col-lg-9 chat-main d-flex flex-column h-100">
+                            <div class="chat-main-header d-flex justify-content-between align-items-center flex-shrink-0"
+                                 id="chat_header">
+                                <div class="d-flex align-items-center gap-2 overflow-hidden">
+                                    <button type="button" class="btn-chat-toggle" id="mobile_chat_toggle">
+                                        <i class="fa fa-bars"/>
+                                    </button>
+                                    <t t-foreach="partners" t-as="p">
+                                        <div t-att-data-id="p.id"
+                                             class="active-contact-header d-none align-items-center">
+                                            <div class="avatar-container flex-shrink-0 d-none d-sm-block">
+                                                <div class="avatar-letter" t-if="not p.image_128">
+                                                    <t t-esc="p.name[0]"/>
+                                                </div>
+                                                <img t-if="p.image_128"
+                                                     t-att-src="'/web/image/res.partner/%s/image_128' % p.id"
+                                                     class="chat-avatar"/>
+
+                                            </div>
+                                            <div class="d-flex flex-column overflow-hidden">
+                                                <span class="contact-name-large text-truncate">
+                                                    <t t-esc="p.name"/>
+                                                </span>
+
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                                <div class="chat-header-actions flex-shrink-0 ms-2">
+                                    <button type="button" class="" id="block_user_btn"
+                                            data-id=""
+                                            style="height: 50px; width: 50px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;">
+                                        <img t-att-src="'/subscription_package_extended/static/src/block_user.png'"
+                                             class="img-fluid"/>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div id="chat-box" class="chat-messages-box flex-grow-1"></div>
+                            <div class="chat-input-area d-flex align-items-center flex-shrink-0"
+                                 style="position:relative;">
+                                <!-- Emoji Picker Trigger -->
+                                <button id="emoji_btn" type="button" title="Insert emoji">
+                                    <i class="fa fa-smile-o"/>
+                                </button>
+                                <!-- Emoji Panel — populated by chat.js -->
+                                <div id="emoji_panel"
+                                     style="display:none; position:absolute; bottom:70px; left:0; width:320px; background:#111c14; border:1px solid rgba(196,154,46,0.25); border-radius:6px; padding:0.75rem; z-index:9999; box-shadow:0 8px 32px rgba(0,0,0,0.5);">
+                                    <div id="emoji_grid"
+                                         style="display:flex; flex-wrap:wrap; gap:4px; max-height:200px; overflow-y:auto;"/>
+                                </div>
+                                <div class="input-wrapper flex-grow-1 d-flex align-items-center">
+                                    <input type="text" id="msg_input" class="chat-input w-100"
+                                           placeholder="Type your message with care and respect..."
+                                           onkeydown="if(event.keyCode===13){event.preventDefault(); document.getElementById('send_btn').click();}"/>
+                                </div>
+                                <button id="send_btn" type="button" class="btn-send-gold ms-2">
+                                    <i class="fa fa-paper-plane"/>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </t>
+    </template>
+    <template id="no_plan_template" name="No Subscription Plan">
+        <t t-call="website.layout">
+            <div class="estate-screen">
+                <div class="estate-card">
+                    <div class="estate-icon">🔒</div>
+                    <h2 class="estate-title">No Active Subscription</h2>
+                    <p class="estate-sub">You need an active membership plan to connect and chat with members.</p>
+                    <a href="/#pricing" class="estate-btn estate-btn-outline">VIEW MEMBERSHIP PLANS</a>
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="no_chats_template" name="No Chats Found">
+        <t t-call="website.layout">
+            <div class="estate-screen">
+                <div class="estate-card">
+                    <div class="estate-icon">📬</div>
+                    <h2 class="estate-title">No Chats Yet</h2>
+                    <p class="estate-sub">When you connect with members, your conversations will appear here.</p>
+                    <a href="/match" class="estate-btn estate-btn-ghost">BROWSE PROFILES</a>
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="chat_limit_reached_template" name="Chat Limit Reached">
+        <t t-call="website.layout">
+            <div class="estate-screen">
+                <div class="estate-card">
+                    <div class="estate-icon">⏳</div>
+                    <h2 class="estate-title">Chat Limit Reached</h2>
+                    <p class="estate-sub">You have reached the maximum number of conversations for your current plan.
+                    </p>
+                    <a href="/#pricing" class="estate-btn estate-btn-gold">UPGRADE PLAN</a>
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="custom_header_chat" inherit_id="website_sale.header_cart_link">
+        <xpath expr="//li" position="after">
+            <li class="o_wsale_my_cart mx-2">
+                <a href="/chatbox" aria-label="Chat" class="nav-cta d-flex align-items-center justify-content-center"
+                   style="padding: 0 1.5rem; position: relative;">
+                    CHAT
+                    <sup t-if="chat_unread_count" t-esc="chat_unread_count"
+                         class="badge position-absolute top-0 start-100 translate-middle rounded-pill"
+                         style="background-color: #e0b84a; color: #000; border: 2px solid #0e1510;"/>
+                </a>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="kyc_pending_template" name="KYC Verification Pending">
+        <t t-call="website.layout">
+            <div class="estate-screen">
+                <div class="kyc-card">
+
+                    <!-- Icon -->
+                    <div class="kyc-icon-wrap">
+                        <span class="kyc-icon">&#x1F4CB;</span>
+                    </div>
+
+                    <!-- Badge -->
+                    <div class="kyc-badge">VERIFICATION IN PROGRESS</div>
+
+                    <!-- Title & Sub -->
+                    <h2 class="estate-title">KYC Verification Pending</h2>
+                    <p class="estate-sub">
+                        Your identity is being reviewed by our team. Chat will be unlocked
+                        once your verification is approved. This usually takes 1–2 business days.
+                    </p>
+
+                    <!-- Progress Tracker -->
+                    <div class="kyc-tracker">
+                        <div class="kyc-step kyc-done">
+                            <div class="kyc-step-dot kyc-dot-done">
+                                <i class="fa fa-check"/>
+                            </div>
+                            <div class="kyc-step-line kyc-line-done"/>
+                            <span class="kyc-step-label">Identity Submitted</span>
+                        </div>
+                        <div class="kyc-step kyc-done">
+                            <div class="kyc-step-dot kyc-dot-done">
+                                <i class="fa fa-check"/>
+                            </div>
+                            <div class="kyc-step-line kyc-line-pending"/>
+                            <span class="kyc-step-label">Under Review</span>
+                        </div>
+                        <div class="kyc-step kyc-pending">
+                            <div class="kyc-step-dot kyc-dot-pending"/>
+                            <div class="kyc-step-line kyc-line-hidden"/>
+                            <div>
+                                <span class="kyc-step-label kyc-label-muted">Verification Complete</span>
+                                <span class="kyc-step-sub">Currently processing...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Note -->
+                    <div class="kyc-note">
+                        <i class="fa fa-circle-o kyc-note-icon"/>
+                        If you haven&#x27;t submitted your documents yet, please complete your
+                        profile verification to proceed.
+                    </div>
+
+
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

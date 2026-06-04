@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="kyc_pending_template" name="KYC Pending Page">
+        <t t-call="website.layout">
+            <div class="container mt-4">
+                <h1 class="mb-4 text-center">KYC PENDING</h1>
+            </div>
+        </t>
+    </template>
+
+</odoo>

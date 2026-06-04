@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="find_match_template" name="Find Match Page">
+        <t t-call="website.layout">
+            <div class="container mt-4">
+                <h2 class="mb-4">Matches</h2>
+                <div class="row">
+                    <t t-foreach="users" t-as="user">
+                        <t t-set="plan" t-value="current_user.subscription_plan_id"/>
+                        <t t-set="connection_limit_reached"
+                           t-value="(current_user.connection_used/2) >= plan.connection_limit"/>
+                        <t t-set="chat_limit_reached" t-value="(current_user.chat_used/2) >= plan.chat_limit"/>
+                        <t t-set="req" t-value="request.env['connect.request'].sudo().search(['|',
+                           '&amp;', ('from_user_id','=',current_user.id), ('to_user_id','=',user.id),
+                           '&amp;', ('from_user_id','=',user.id), ('to_user_id','=',current_user.id)], limit=1)"/>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100 shadow-sm">
+                                <img t-att-src="'/web/image/res.partner/%s/image_1920' % user.id" class="card-img-top"
+                                     style="height:200px; object-fit:cover;"/>
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">
+                                        <t t-esc="user.name"/>
+                                    </h5>
+                                    <p class="text-muted" t-if="user.age">
+                                        Age:
+                                        <t t-esc="user.age"/>
+                                    </p>
+                                    <t t-if="user.kyc_status == 'approved'">
+                                        <t t-if="connection_limit_reached">
+                                            <button class="match-btn btn-locked" disabled="disabled">
+                                                <i class="fa fa-lock"/>
+                                                Limit Reached
+                                            </button>
+                                        </t>
+                                        <t t-elif="not req">
+                                            <a t-att-href="'/send_request/%s' % user.id" class="match-btn gold-btn">
+                                                Connect
+                                            </a>
+                                        </t>
+                                        <t t-elif="req.state == 'pending'">
+                                            <span class="badge bg-info">Request Sent</span>
+                                        </t>
+                                        <t t-elif="req.state == 'accepted'">
+                                            <a t-att-href="'/chatbox?user_id=%s' % user.id"
+                                               class="btn btn-success btn-sm" t-if="not chat_limit_reached">
+                                                Chat
+                                            </a>
+                                            <div class="badge bg-danger" t-if="chat_limit_reached">
+                                                Chats Limit Reached
+                                                <div class="small text-muted">
+                                                    Chats:
+                                                    <t t-esc="current_user.chat_used"/>
+                                                    /
+                                                    <t t-esc="int(plan.chat_limit)"/>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <record id="menu_find_match" model="website.menu">
+        <field name="name">Find Match</field>
+        <field name="url">/match</field>
+        <field name="parent_id" ref="website.main_menu"/>
+    </record>
+
+</odoo>

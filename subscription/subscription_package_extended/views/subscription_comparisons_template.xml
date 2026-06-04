@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="subscription_comparisons" name="Subscription Comparisons">
+        <section class="s_comparisons pt48 pb48 o_colored_level" name="Subscription Comparisons">
+
+            <div class="container" t-if="plans">
+                <div class="mb-4">
+                    <h3 style="text-align: center;">Competitive pricing</h3>
+                    <p class="lead" style="text-align: center;">Listing your product pricing helps potential customers
+                        quickly determine if it fits
+                        their budget and needs.
+                    </p>
+                </div>
+                <div class="row gap-4 gap-lg-0">
+                    <t t-foreach="plans" t-as="plan">
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-4" t-if="plan.product_id">
+                            <div class="pricing-card position-relative h-100">
+                                <div class="pricing-glow"/>
+
+                                <div class="pricing-badge"
+                                     t-if="plan.price &gt; 0">
+
+                                    MOST POPULAR
+
+                                </div>
+
+                                <!-- Top -->
+
+                                <div class="pricing-top">
+
+                                    <h3 class="pricing-title">
+                                        <t t-esc="plan.name"/>
+                                    </h3>
+
+                                    <div class="pricing-price">
+
+                                        <span class="currency">$</span>
+
+                                        <span class="amount">
+                                            <t t-esc="int(plan.price)"/>
+                                        </span>
+
+                                    </div>
+
+                                    <div class="pricing-cycle">
+
+                                        <t t-if="plan.price == 0">
+                                            Forever Free
+                                        </t>
+
+                                        <t t-else="">
+
+                                            Per
+
+                                            <t t-if="plan.renewal_period == 'days'">
+                                                Day
+                                            </t>
+
+                                            <t t-elif="plan.renewal_period == 'weeks'">
+                                                Week
+                                            </t>
+
+                                            <t t-elif="plan.renewal_period == 'months'">
+                                                Month
+                                            </t>
+
+                                            <t t-elif="plan.renewal_period == 'years'">
+                                                Year
+                                            </t>
+
+                                        </t>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Divider -->
+
+                                <div class="pricing-divider"></div>
+
+                                <!-- Features -->
+
+                                <ul class="pricing-features">
+
+                                    <t t-foreach="plan.feature_ids"
+                                       t-as="feature">
+
+                                        <li t-att-class="feature.is_available and '' or 'disabled-feature'">
+
+                                            <div class="feature-icon">
+
+                                                <i t-att-class="'fa ' + (
+                                feature.is_available
+                                and 'fa-check'
+                                or 'fa-times'
+                            )"/>
+
+                                            </div>
+
+                                            <span>
+                                                <t t-esc="feature.name"/>
+                                            </span>
+
+                                        </li>
+
+                                    </t>
+
+                                </ul>
+
+                                <!-- Footer -->
+
+                                <div class="pricing-footer">
+
+                                    <t t-if="is_public">
+
+                                        <a href="/web/login"
+                                           class="pricing-btn">
+
+                                            Get Started
+
+                                        </a>
+
+                                    </t>
+
+                                    <t t-else="">
+
+                                        <t t-set="is_current"
+                                           t-value="current_plan_id and plan.id == current_plan_id"/>
+
+                                        <t t-if="is_current">
+
+                                            <button class="pricing-btn active-btn"
+                                                    disabled="disabled">
+
+                                                Current Plan
+
+                                            </button>
+
+                                        </t>
+
+                                        <t t-else="">
+
+                                            <form action="/shop/cart/update"
+                                                  method="post">
+
+                                                <input type="hidden"
+                                                       name="csrf_token"
+                                                       t-att-value="request.csrf_token()"/>
+
+                                                <input type="hidden"
+                                                       name="product_id"
+                                                       t-att-value="plan.product_id.id"/>
+
+                                                <input type="hidden"
+                                                       name="add_qty"
+                                                       value="1"/>
+
+                                                <button type="submit"
+                                                        class="pricing-btn">
+
+                                                    <t t-if="plan.price &gt; amount">
+                                                        Upgrade Plan
+                                                    </t>
+
+                                                    <t t-elif="plan.price &lt; amount">
+                                                        Downgrade Plan
+                                                    </t>
+
+                                                    <t t-else="">
+                                                        Subscribe
+                                                    </t>
+
+                                                </button>
+
+                                            </form>
+
+                                        </t>
+
+                                    </t>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </t>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="homepage_inherit" inherit_id="website.homepage">
+        <xpath expr="//div[@id='wrap']" position="inside">
+            <t t-call="subscription_package_extended.subscription_comparisons"/>
+        </xpath>
+    </template>
+
+</odoo>

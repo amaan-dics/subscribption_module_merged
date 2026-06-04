@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_connect_request_tree" model="ir.ui.view">
+        <field name="name">connect.request.tree</field>
+        <field name="model">connect.request</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="from_user_id"/>
+                <field name="to_user_id"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_connect_request_form" model="ir.ui.view">
+        <field name="name">connect.request.form</field>
+        <field name="model">connect.request</field>
+        <field name="arch" type="xml">
+            <form string="Connection Form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="from_user_id"/>
+                            <field name="to_user_id"/>
+                        </group>
+                        <group>
+                            <field name="state"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_connect_request" model="ir.actions.act_window">
+        <field name="name">Connection Requests</field>
+        <field name="res_model">connect.request</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_connect_request" name="Connection Requests" action="action_connect_request" sequence="30"/>
+
+</odoo>
